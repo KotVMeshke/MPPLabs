@@ -5,10 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Tracer.Data;
-using Tracer.Tracers.Interface;
+using TracerSpace.Data;
+using TracerSpace.Tracers.Interface;
 
-namespace Tracer.Tracers
+namespace TracerSpace.Tracers
 {
     public class Tracer : ITracer
     {

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Collections.Concurrent;
 
-namespace Tracer.Data
+namespace TracerSpace.Data
 {
     public class TraceData
     {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Tracer.Serializer.Interface;
+using TracerSpace.Serializer.Interface;
 
-namespace Tracer.Serializer
+namespace TracerSpace.Serializer
 {
     public class XMLSerializer<T> : ISerializer<T>
     {

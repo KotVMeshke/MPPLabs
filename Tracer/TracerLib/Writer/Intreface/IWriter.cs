@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MPP_LABA1_Console.Writer.Interface
+namespace TracerSpace.Writer.Interface
 {
-    internal interface IWriter
+    public interface IWriter
     {
         void Write(params string[] text);
     }

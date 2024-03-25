@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tracer.Serializer.Interface
+namespace TracerSpace.Serializer.Interface
 {
     internal interface ISerializer<T>
     {

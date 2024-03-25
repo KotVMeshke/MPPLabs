@@ -1,4 +1,4 @@
-﻿using Tracer.Data;
+﻿using TracerSpace.Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Tracer.Tracers
+namespace TracerSpace.Tracers
 {
     [XmlRoot("root")]
     [Serializable]
