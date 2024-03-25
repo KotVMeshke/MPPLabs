@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Collections.Concurrent;
 
-namespace MPP_LABA1_Console.Data
+namespace Tracer.Data
 {
     public class TraceData
     {

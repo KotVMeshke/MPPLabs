@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace MPP_LABA1_Console.Data
+namespace Tracer.Data
 {
     [Serializable]
     public class MethodData
