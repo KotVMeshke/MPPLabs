@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace TracerSpace.Data
@@ -54,6 +56,15 @@ namespace TracerSpace.Data
             TimeWithText = "0ms";
         }
 
+        public MethodData(string? Method, long time, string? Class, List<MethodData> methods)
+        {
+            this.Method = Method;
+            this.Class = Class;
+            Time = time;
+            Methods = methods;
+            TimeWithText = time + "ms";
+        }
+
         public void StartTimer()
         {
             _watch = Stopwatch.StartNew();
@@ -68,5 +79,7 @@ namespace TracerSpace.Data
                 TimeWithText = Time + "ms";
             }
         }
+
+        
     }
 }

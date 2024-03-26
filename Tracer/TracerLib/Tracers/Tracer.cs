@@ -17,7 +17,6 @@ namespace TracerSpace.Tracers
         public Tracer()
         {
             _traceResult = new TraceData();
-            _traceResult.AddNewThread(new ThreadData(Thread.CurrentThread.ManagedThreadId));
         }
 
         public void StartTrace()

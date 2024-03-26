@@ -31,30 +31,12 @@ namespace TracerSpace.Data
                 return threadData.PopMethod();
             else
                 return null;
-
-
-            //foreach (var thread in _trace)
-            //{
-            //    if (thread.ThreadId == ThreadId)
-            //    {
-            //        return thread.PopMethod();
-            //    }
-            //}
         }
 
         public void AddMethodToThread(int ThreadId, MethodData methodData)
         {
             if (_trace.TryGetValue(ThreadId, out ThreadData? threadData))
                 threadData.AddMethodToThread(methodData);
-
-            //foreach (var thread in _trace)
-            //{
-            //    if (thread.ThreadId == ThreadId)
-            //    {
-            //        thread.AddMethodToThread(methodData);
-            //        break;
-            //    }
-            //}
         }
 
     }

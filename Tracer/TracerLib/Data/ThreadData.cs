@@ -21,7 +21,7 @@ namespace TracerSpace.Data
         public long Time;
         [XmlAttribute("time")]
         [JsonProperty("time")]
-        public string TimeWithText;
+        public string? TimeWithText;
 
         [XmlElement("method")]
         [JsonProperty("methods")]
@@ -45,6 +45,25 @@ namespace TracerSpace.Data
             TimeWithText = "0ms";
         }
 
+        public ThreadData(List<MethodData> methods)
+        {
+            _traceStack = new Stack<MethodData>();
+            Methods = methods;
+
+            CalculateFullTime();
+
+        }
+
+        public ThreadData(List<MethodData> methods, int threadId)
+        {
+            _traceStack = new Stack<MethodData>();
+            Methods = methods;
+            ThreadId = threadId;
+
+            CalculateFullTime();
+
+        }
+
         public ThreadData(int ThreadId)
         {
             _traceStack = new Stack<MethodData>();
@@ -53,6 +72,15 @@ namespace TracerSpace.Data
             TimeWithText = "0ms";
         }
 
+        public void CalculateFullTime()
+        {
+            for (int i = 0; i < Methods.Count; i++)
+            {
+                Time += Methods[i].Time;
+            }
+
+            TimeWithText = $"{Time}ms";
+        }
         public void AddMethodToThread(MethodData MethodData)
         {
             PushMethod(MethodData);
@@ -110,6 +138,8 @@ namespace TracerSpace.Data
                 GetThreadTime();
             return method;
         }
+
+       
 
 
     }
