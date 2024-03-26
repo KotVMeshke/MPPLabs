@@ -14,6 +14,7 @@ namespace TracerSpace.Data
     [Serializable]
     public class MethodData
     {
+
         [XmlAttribute("name")]
         [JsonProperty("name")]
         public string? Method;

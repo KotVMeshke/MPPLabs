@@ -12,6 +12,24 @@ namespace TracerWork
     internal class TestClass
     {
         public static Tracer tracer = new Tracer();
+        int count = 0;
+
+
+        public void RecursionMethod(int n)
+        {
+            tracer.StartTrace();
+
+            Thread.Sleep(50);
+            if (n == 1)
+                M1();
+
+            if (n != 0)
+                RecursionMethod(--n);
+
+            tracer.StopTrace();
+        }
+
+
         public void M1()
         {
             tracer.StartTrace();

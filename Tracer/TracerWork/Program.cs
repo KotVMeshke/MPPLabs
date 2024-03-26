@@ -16,6 +16,7 @@ namespace TracerWork
             test.M1();
             test.M6();
 
+            test.RecursionMethod(5);
             Task.Run(() => test.M1());
             Task.Run(() => test.M2());
             Task.Run(() => test.M3());
