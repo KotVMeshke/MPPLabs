@@ -1,10 +1,13 @@
-﻿namespace Faker
+﻿using FakerLab.Classes;
+using FakerLab.FakerLabClass;
+
+namespace FakerLab;
+
+internal class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello, World!");
-        }
+        Faker faker = new Faker();
+        Console.WriteLine(faker.Create<Foo>());
     }
 }

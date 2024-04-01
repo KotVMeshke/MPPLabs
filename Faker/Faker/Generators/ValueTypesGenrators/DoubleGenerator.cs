@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Faker.Generators.ValueTypesGenrators
+namespace FakerLab.Generators.ValueTypesGenrators
 {
     internal class DoubleGenerator : IGenerator<double>
     {
         private readonly Random _random = new Random();
 
-        public double GetValue()
+        public double GenerateValue()
         {
             return _random.NextDouble();
         }

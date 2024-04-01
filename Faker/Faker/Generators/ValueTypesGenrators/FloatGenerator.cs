@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Faker.Generators.ValueTypesGenrators
+namespace FakerLab.Generators.ValueTypesGenrators
 {
     internal class FloatGenerator : IGenerator<float>
     {
         private readonly Random _random = new Random();
 
-        public float GetValue()
+        public float GenerateValue()
         {
             return _random.NextSingle();
         }

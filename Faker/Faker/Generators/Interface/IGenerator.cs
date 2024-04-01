@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Faker.Generators
+namespace FakerLab.Generators
 {
     public interface IGenerator<T>
     {
-        T GetValue();
+        T GenerateValue();
     }
 }
