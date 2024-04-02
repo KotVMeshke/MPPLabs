@@ -1,22 +1,21 @@
-﻿using System;
+﻿using FakerLab.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FakerLab.Classes
+namespace FakerLab.Entities
 {
-    public class Foo
+    public class BarWithInner
     {
+        public string? String { get; set; }
         public int Int { get; set; }
         public float Float { get; set; }
         public double Double;
         public decimal Decimal;
         public List<int>? List;
-
-        public override string? ToString()
-        {
-            return $"Int: {Int}\nFloat: {Float}\nDouble: {Double}\nDecimal: {Decimal}\nList: {string.Join(' ',List)}";
-        }
+        public DateTime DateTime { get; set; }
+        public Foo? Foo;
     }
 }

@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace FakerLab.Classes
 {
-    public class Foo
+    public class Bar
     {
+        public string? String { get; set; }
         public int Int { get; set; }
         public float Float { get; set; }
         public double Double;
         public decimal Decimal;
         public List<int>? List;
+        public DateTime DateTime { get; set; }
 
-        public override string? ToString()
-        {
-            return $"Int: {Int}\nFloat: {Float}\nDouble: {Double}\nDecimal: {Decimal}\nList: {string.Join(' ',List)}";
-        }
     }
 }

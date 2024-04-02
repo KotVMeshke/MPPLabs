@@ -32,13 +32,6 @@ namespace FakerLab.FakerLabClass
 
         private void LoadPlugins(string pluginsDirectory)
         {
-            var solutionPath = AppDomain.CurrentDomain.BaseDirectory;
-            while (!(Directory.GetDirectories(solutionPath).Select(Path.GetFileName).ToList().FirstOrDefault(x => x == "Plugins") == "Plugins"))
-            {
-                solutionPath = Directory.GetParent(solutionPath)?.FullName;
-            }
-            pluginsDirectory = Path.Combine(solutionPath, pluginsDirectory);
-
             if (Directory.Exists(pluginsDirectory))
             {
                 var pluginFiles = Directory.GetFiles(pluginsDirectory, "*.dll");
@@ -55,14 +48,17 @@ namespace FakerLab.FakerLabClass
                             var typeArgument = type.GetInterfaces()
                                 .Single(i => i.GetGenericTypeDefinition() == typeof(IGenerator<>))
                                 .GetGenericArguments()[0];
-
+                            if (typeArgument.IsGenericType)
+                            {
+                                typeArgument = typeArgument.GetGenericTypeDefinition();
+                            }
                             _generators.Add(typeArgument, type);
                         }
                     }
                 }
             }
 
-         
+
         }
         public T? Create<T>()
         {
@@ -85,7 +81,7 @@ namespace FakerLab.FakerLabClass
                 GenerateFields(instance);
                 GenerateProperties(instance);
             }
-            catch(InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 Console.WriteLine($"Class: {type.Name} from {type.Namespace} is abstract");
             }
@@ -160,7 +156,7 @@ namespace FakerLab.FakerLabClass
 
         private void GenerateFields(object? instance)
         {
-           var type = instance!.GetType();
+            var type = instance!.GetType();
             var fields = type.GetFields(BindingFlags.Public | BindingFlags.Instance);
 
             foreach (var f in fields)

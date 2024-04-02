@@ -5,14 +5,11 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faker", "Faker\Faker.csproj", "{4C37DB61-924E-4D99-88B0-D5CEC77FFA31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringGenerator", "StringGenerator\StringGenerator.csproj", "{1C4F63D5-0162-4287-A768-B943454E49E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringGenerator", "StringGenerator\StringGenerator.csproj", "{1C4F63D5-0162-4287-A768-B943454E49E3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{9FDEE5CD-CDD8-4A76-90FF-8FB708A08D11}"
-	ProjectSection(SolutionItems) = preProject
-		Plugins\StringGenerator.dll = Plugins\StringGenerator.dll
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateTimeGenerator", "DateTimeGenerator\DateTimeGenerator.csproj", "{1C735CC0-60E2-4C0A-A7A7-8E6D50F89838}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimeGenerator", "DateTimeGenerator\DateTimeGenerator.csproj", "{1C735CC0-60E2-4C0A-A7A7-8E6D50F89838}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{61080239-9673-4950-93BC-6687356CFD36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +29,10 @@ Global
 		{1C735CC0-60E2-4C0A-A7A7-8E6D50F89838}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C735CC0-60E2-4C0A-A7A7-8E6D50F89838}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C735CC0-60E2-4C0A-A7A7-8E6D50F89838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61080239-9673-4950-93BC-6687356CFD36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61080239-9673-4950-93BC-6687356CFD36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61080239-9673-4950-93BC-6687356CFD36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61080239-9673-4950-93BC-6687356CFD36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
