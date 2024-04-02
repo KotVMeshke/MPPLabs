@@ -1,12 +1,12 @@
 ﻿using FakerLab.Generators;
 using FakerLab.Generators.CollectionsGenerators;
-using FakerLab.Generators.StringGenerators;
 using FakerLab.Generators.SystemObjectsGenerators;
 using FakerLab.Generators.ValueTypesGenrators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,21 +16,54 @@ namespace FakerLab.FakerLabClass
     {
         private readonly Dictionary<Type, Type> _generators = new()
         {
-            { typeof(int), typeof(IntGenerator) },{ typeof(string), typeof(StringGenerator) },
+            { typeof(int), typeof(IntGenerator) },
             { typeof(List<>), typeof(ListGenerator<,>) },{ typeof(decimal), typeof(DecimalGenerator) },
             { typeof(double), typeof(DoubleGenerator) },{ typeof(float), typeof(FloatGenerator) },
             { typeof(byte), typeof(ByteGenerator) },{ typeof(long), typeof(LongGenerator) },
             { typeof(short), typeof(ShortGenerator) },{ typeof(char), typeof(CharGenerator) },
-            { typeof(DateTime), typeof(DateTimeGenerator) },
         };
 
         private readonly HashSet<Type> _generated = new HashSet<Type>();
 
-        public Faker()
+        public Faker(string pluginsSource = @"Plugins/")
         {
-
+            LoadPlugins(pluginsSource);
         }
 
+        private void LoadPlugins(string pluginsDirectory)
+        {
+            var solutionPath = AppDomain.CurrentDomain.BaseDirectory;
+            while (!(Directory.GetDirectories(solutionPath).Select(Path.GetFileName).ToList().FirstOrDefault(x => x == "Plugins") == "Plugins"))
+            {
+                solutionPath = Directory.GetParent(solutionPath)?.FullName;
+            }
+            pluginsDirectory = Path.Combine(solutionPath, pluginsDirectory);
+
+            if (Directory.Exists(pluginsDirectory))
+            {
+                var pluginFiles = Directory.GetFiles(pluginsDirectory, "*.dll");
+
+                foreach (string pluginFile in pluginFiles)
+                {
+                    var assembly = Assembly.LoadFrom(pluginFile);
+                    var types = assembly.GetExportedTypes();
+
+                    foreach (var type in types)
+                    {
+                        if (type.GetInterfaces().Any(x => x.GetGenericTypeDefinition() == typeof(IGenerator<>)))
+                        {
+                            var typeArgument = type.GetInterfaces()
+                                .Single(i => i.GetGenericTypeDefinition() == typeof(IGenerator<>))
+                                .GetGenericArguments()[0];
+
+                            _generators.Add(typeArgument, type);
+                        }
+                    }
+                }
+            }
+
+         
+        }
         public T? Create<T>()
         {
             var type = typeof(T);
@@ -130,13 +163,13 @@ namespace FakerLab.FakerLabClass
            var type = instance!.GetType();
             var fields = type.GetFields(BindingFlags.Public | BindingFlags.Instance);
 
-            foreach (var field in fields)
+            foreach (var f in fields)
             {
-                var value = field.GetValue(instance);
+                var value = f.GetValue(instance);
                 if (value is null || IsGenerated(value))
                 {
-                    var generated = GenerateValue(field.FieldType);
-                    field.SetValue(instance, generated);
+                    var generated = GenerateValue(f.FieldType);
+                    f.SetValue(instance, generated);
                 }
             }
         }

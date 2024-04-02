@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FakerLab.Generators.StringGenerators
 {
-    internal class StringGenerator : IGenerator<string>
+    
+    public class StringGenerator : IGenerator<string>
     {
         private readonly Random _random = new Random();
         public string GenerateValue()
