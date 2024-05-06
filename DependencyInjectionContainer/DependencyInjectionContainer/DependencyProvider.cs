@@ -1,5 +1,4 @@
 using DependencyInjectionContainer;
-using DependencyInjectionCore.Exceptions;
 using DependencyInjectionCore.Models;
 
 namespace DependencyInjectionCore;

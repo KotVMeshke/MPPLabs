@@ -1,6 +1,5 @@
 using System.Reflection;
 using DependencyInjectionContainer;
-using DependencyInjectionCore.Exceptions;
 
 namespace DependencyInjectionCore.Models;
 
